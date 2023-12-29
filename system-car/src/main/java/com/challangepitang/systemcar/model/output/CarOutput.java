@@ -1,14 +1,12 @@
 package com.challangepitang.systemcar.model.output;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class CarOutput {
     private Long id;
     private Integer year;

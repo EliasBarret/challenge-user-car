@@ -22,5 +22,5 @@ public class UserInput {
     private String login;
     private String password;
     private String phone;
-    private List<Car> cars;
+    private List<Long> cars;
 }

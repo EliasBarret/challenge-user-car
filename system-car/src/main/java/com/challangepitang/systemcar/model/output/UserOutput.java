@@ -2,6 +2,8 @@ package com.challangepitang.systemcar.model.output;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -12,8 +14,8 @@ public class UserOutput {
     private String firstName;
     private String lastName;
     private String email;
-    private String birthday;
+    private Date birthday;
     private String phone;
-    private String createdAt;
-    private String lastLogin;
+    private Date createdAt;
+    private Date lastLogin;
 }
