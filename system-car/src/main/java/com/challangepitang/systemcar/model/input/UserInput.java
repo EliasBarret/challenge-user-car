@@ -1,10 +1,7 @@
 package com.challangepitang.systemcar.model.input;
 
 import com.challangepitang.systemcar.model.Car;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserInput {
     private String firstName;
     private String lastName;

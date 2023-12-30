@@ -2,6 +2,8 @@ package com.challangepitang.systemcar.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -10,8 +12,10 @@ import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
+    @Setter
+    @Getter
     @Value("${jwt.secret}")
-    private String jwtSecret;
+    public String jwtSecret;
 
     @Value("${jwt.duration}")
     private int jwtExpirationInMs;

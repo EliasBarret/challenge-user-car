@@ -227,8 +227,8 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         }
     }
 
-    private User findAuthenticatedUserDetails(String token) {
-        if (StringUtils.isBlank(token)) {
+    public User findAuthenticatedUserDetails(String token) {
+        if (token == null || token.trim().isEmpty()) {
             throw new UnauthorizedException("Unauthorized");
         }
 
@@ -262,9 +262,12 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         return user;
     }
 
-    private LoginOutput convertToLoginOutput(User user){
-        LoginOutput loginOutput = new LoginOutput();
+    private LoginOutput convertToLoginOutput(User user) {
+        if (user == null) {
+            throw new InvalidFieldsException("Invalid fields");
+        }
 
+        LoginOutput loginOutput = new LoginOutput();
         BeanUtils.copyProperties(user, loginOutput);
         return loginOutput;
     }
