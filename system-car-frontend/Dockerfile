@@ -1,7 +1,14 @@
-FROM node:20.10.0
+# Estagio 1 - Será responsavel em construir nossa aplicação
+FROM node:latest as node
 WORKDIR /app
-COPY . .
+COPY package.json /app/
+RUN npm i npm@latest -g
 RUN npm install
-RUN npm run build --prod
-EXPOSE 4201
-CMD ["npm", "start"]
+COPY ./ /app/
+ARG env=prod
+RUN npm run build
+
+# Estagio 2 - Será responsavel por expor a aplicação
+FROM nginx
+COPY --from=node /app/dist/system-car-frontend /usr/share/nginx/html
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf

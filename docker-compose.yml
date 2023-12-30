@@ -4,12 +4,15 @@ services:
   backend:
     build:
       context: ./system-car
+      dockerfile: Dockerfile
+    image: openjdk:11
     ports:
       - "8080:8080"
 
   frontend:
     build:
       context: ./system-car-frontend
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     depends_on:
