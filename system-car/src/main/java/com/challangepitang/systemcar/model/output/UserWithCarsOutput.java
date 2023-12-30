@@ -18,6 +18,7 @@ public class UserWithCarsOutput {
     private String firstName;
     private String lastName;
     private String email;
+    private String login;
     private Date birthday;
     private String phone;
     private Date createdAt;

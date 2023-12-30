@@ -1,0 +1,30 @@
+<!-- cadastro.component.html -->
+<mat-card>
+    <h2>Cadastro de Veículos</h2>
+    <form (ngSubmit)="register()">
+      <mat-form-field>
+        <mat-label for="model">Modelo</mat-label>
+        <input matInput type="text" id="model" name="model" [(ngModel)]="carInput.model" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label for="ano">Ano</mat-label>
+        <input matInput type="number" id="ano" name="ano" [(ngModel)]="carInput.year" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label for="plate">Placa</mat-label>
+        <input matInput type="text" id="plate" name="plate" [(ngModel)]="carInput.licensePlate" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="color">Cor</mat-label>
+        <input matInput type="text" id="color" name="color" [(ngModel)]="carInput.color" required>
+      </mat-form-field>
+      <section>
+        <button mat-raised-button color="primary" type="submit">Salvar</button>
+        <button mat-button routerLink="/home">Voltar</button>
+      </section>
+    </form>
+  </mat-card>
+  

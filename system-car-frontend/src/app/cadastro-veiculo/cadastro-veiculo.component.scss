@@ -1,0 +1,42 @@
+mat-card {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Estilo para o form a partir da tela média (por exemplo, tablet) */
+@media screen and (min-width: 600px) {
+  form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  mat-form-field {
+    width: 48%;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Ocupar 100% da largura do form */
+}
+
+button {
+  width: 48%; /* Cada botão ocupará quase metade do espaço */
+}

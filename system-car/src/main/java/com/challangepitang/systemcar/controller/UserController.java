@@ -50,6 +50,7 @@ public class UserController {
     }
     @PutMapping(value = "/users/{id}")
     public ResponseEntity<UserOutput> update(@PathVariable Long id, @RequestBody UserInput userInput) throws Exception {
+        System.out.println("Dados recebidos na atualização: " + userInput.toString());
         return ResponseEntity.ok(_userService.update(id, userInput));
     }
     @DeleteMapping(value = "/users/{id}")

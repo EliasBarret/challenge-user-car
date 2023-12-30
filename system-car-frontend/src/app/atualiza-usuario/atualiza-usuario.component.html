@@ -1,0 +1,52 @@
+<h2>Atualizar Cadastro</h2>
+
+  <section class="form-section" fxLayout="row" fxLayoutGap="5px">
+    <mat-form-field fxFlex="50%">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="data.firstName">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <mat-label>Sobrenome</mat-label>
+      <input matInput [(ngModel)]="data.lastName">
+    </mat-form-field>
+  </section>
+
+  <section class="form-section" fxLayout="row" fxLayoutGap="5px">
+    <mat-form-field fxFlex="50%">
+    <mat-label for="birthday">Birthday:</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.birthday" [ngModelOptions]="{standalone: true}" required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.email">
+    </mat-form-field>
+  </section>
+
+  <section class="form-section" fxLayout="row" fxLayoutGap="5px">
+    <mat-form-field fxFlex="50%">
+      <mat-label>Telefone</mat-label>
+      <input matInput [(ngModel)]="data.phone">
+    </mat-form-field>
+  </section>
+
+  <section class="form-section" fxLayout="row" fxLayoutGap="5px">
+    <mat-form-field fxFlex="50%">
+      <mat-label>Login</mat-label>
+      <input matInput [(ngModel)]="data.login">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+    <mat-label>Senha</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="data.password" [ngModelOptions]="{standalone: true}" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </section>
+
+  <div class="modal-buttons" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+    <button mat-raised-button color="primary" (click)="onSave()">Salvar</button>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+  </div>

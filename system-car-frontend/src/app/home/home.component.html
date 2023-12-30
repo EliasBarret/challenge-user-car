@@ -1,0 +1,82 @@
+<!-- home.component.html -->
+<div class="container">
+    <mat-toolbar color="primary">
+        <span>Home</span>
+        <section>
+            <button mat-icon-button color="accent"[matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <!-- <button mat-menu-item routerLink="/cadastro">Cadastro de usuário</button> -->
+                <button mat-menu-item routerLink="/cadastroVeiculo">Cadastro de veículos</button>
+                <section>
+                  <button mat-menu-item (click)="logout()">Sair</button>
+              </section>
+            </mat-menu>
+        </section>
+    </mat-toolbar>
+    
+    <div class="user-data">
+      <h2>Dados do Usuário</h2>
+      <mat-card>
+        <mat-card-content>
+          <mat-card-subtitle>Nome: {{ userData?.firstName }} {{ userData?.lastName }}</mat-card-subtitle>
+          <mat-card-subtitle>Email: {{ userData?.email }}</mat-card-subtitle>
+          <mat-card-subtitle>Telefone: {{ userData?.phone }}</mat-card-subtitle>
+          <mat-card-subtitle>Data Nascimento: {{ userData?.birthday }}</mat-card-subtitle>
+          <mat-card-subtitle>Login: {{ userData?.login }}</mat-card-subtitle>
+          <mat-card-subtitle>Criado em: {{ userData?.createdAt }}</mat-card-subtitle>
+          <mat-card-subtitle>Ultima visita: {{ userData?.lastLogin }}</mat-card-subtitle>
+        </mat-card-content>
+        <button mat-button color="primary" (click)="openEditModal()">Atualizar cadastro</button>
+      </mat-card>
+    </div> 
+
+    <div class="car-table">
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let car of listCars; let i = index">
+            <ng-container *ngIf="!isEditing[i]">
+              <tr>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.licensePlate }}</td>
+                <td>{{ car.color }}</td>
+                <td>
+                  <button mat-flat-button color="primary" (click)="editCar(i)">Editar</button>
+                </td>
+                <td>
+                  <button mat-flat-button color="warn" (click)="deleteCar(car.id)">Excluir</button>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="isEditing[i]">
+              <tr>
+                <td><input [(ngModel)]="listCars[i].model" /></td>
+                <td><input [(ngModel)]="listCars[i].year" /></td>
+                <td><input [(ngModel)]="listCars[i].licensePlate" /></td>
+                <td><input [(ngModel)]="listCars[i].color" /></td>
+                <td>
+                  <button mat-flat-button color="primary" (click)="saveCar(i, listCars[i])">Salvar</button>
+                </td>
+                <td>
+                  <button mat-flat-button (click)="cancelEdit(i)">Cancelar</button>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

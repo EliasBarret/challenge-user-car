@@ -18,6 +18,6 @@ public interface IUserService {
     UserOutput findAuthenticatedUser(String token) throws Exception;
     UserWithCarsOutput findAuthenticatedUserWithCars(String token) throws Exception;
     void deleteById(Long id);
-    void checkUserProperties(UserInput userInput, Optional<Long> userId) throws Exception;
+    void checkUserProperties(UserInput userInput, Optional<Long> userId, boolean isUpdate) throws Exception;
     boolean isTokenValid(String token) throws Exception;
 }

@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
     @Override
     @Transactional
     public UserOutput create(UserInput userInput) {
-        checkUserProperties(userInput, Optional.empty());
+        checkUserProperties(userInput, Optional.empty(), false);
 
         User userEntity = convertToUser(userInput);
         userEntity.setPassword(bCryptPasswordEncoder.encode(userInput.getPassword()));
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
 
     @Override
     public UserOutput update(Long id, UserInput userInput) {
-        checkUserProperties(userInput, Optional.ofNullable(id));
+        checkUserProperties(userInput, Optional.ofNullable(id), true);
 
         if(id != null){
             User userEntity =
@@ -179,12 +179,12 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
     }
 
     @Override
-    public void checkUserProperties(UserInput userInput, Optional<Long> userId) {
-        if (_userRepository.existsByEmail(userInput.getEmail())) {
+    public void checkUserProperties(UserInput userInput, Optional<Long> userId, boolean isUpdate) {
+        if (!isUpdate && _userRepository.existsByEmail(userInput.getEmail())) {
             throw new EmailAlreadyExistsException("Email already exists");
         }
 
-        if (_userRepository.existsByLogin(userInput.getLogin())) {
+        if (!isUpdate &&_userRepository.existsByLogin(userInput.getLogin())) {
             throw new LoginAlreadyExistsException("Login already exists");
         }
 

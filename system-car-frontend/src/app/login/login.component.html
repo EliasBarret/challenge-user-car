@@ -1,0 +1,17 @@
+<mat-card>
+  <h2>Sistema de Registro de Veículos</h2>
+  <form (ngSubmit)="login()">
+    <mat-form-field>
+      <label for="login">Login:</label>
+      <input matInput type="text" id="login" name="login" [(ngModel)]="loginInput.login" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="password">Password:</label>
+      <input matInput type="password" id="password" name="password" [(ngModel)]="loginInput.password" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+  <button mat-button routerLink="/cadastro">Cadastro</button>
+</mat-card>
