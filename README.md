@@ -105,14 +105,6 @@ A manipulação eficaz de diferentes representações de tempo, como LocalDateTi
 
 - Implementados utilizando JUnit para garantir robustez do código e detecção precoce de problemas.
 
-#### Documentação
-
-- Javadoc utilizado para gerar documentação clara e concisa do código-fonte.
-
-#### Pipeline de Build e Testes
-
-- Automação de build e testes para facilitar a integração contínua.
-
 #### Swagger
 
 - Simplifica a documentação da API e facilita a interação com os endpoints.
@@ -124,21 +116,39 @@ A manipulação eficaz de diferentes representações de tempo, como LocalDateTi
 ### Execução do Projeto
 
 1. **Requisitos:**
-   - Java 8 instalado.
+   
+   - Back
+   
+   - Java 11 instalado.
    - Maven instalado.
    - Banco de dados H2 configurado.
 
+   - Front
+
+   - Angular CLI v17.0.8
+   - Node v20.10.0
+   - npm v10.2.3
+
 2. **Build e Execução:**
+
+   - Back
+
    - Clone o repositório do GitHub.
    - Configure as propriedades do banco de dados em `application.properties`.
    - Execute `mvn clean install` para realizar o build.
    - Execute o aplicativo resultante.
 
+   - Front
+
+   - npm install na raiz do front
+   - npm run serve
+   - acessar o localhost:4800
+
 3. **Testes:**
    - Execute `mvn test` para executar os testes unitários.
 
 4. **Documentação da API:**
-   - Acesse a documentação da API gerada pelo Swagger em [XXXXXXX].
+   - Acesse a documentação da API gerada pelo Swagger em http://localhost:8080/swagger-ui/index.html.
 
 ## Contribuição
 
